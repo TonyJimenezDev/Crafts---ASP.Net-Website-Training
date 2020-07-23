@@ -21,9 +21,18 @@ namespace Crafts.Website.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public IEnumerable<Product> GetProducts()
         {
             return _productsService.GetProducts();
+        }
+
+        [Route("Rate")]
+        [HttpPut]
+        public ActionResult PutRatings([FromQuery] string productId, int rating)
+        {
+            if (productId == null) return NotFound();
+            _productsService.AddRating(productId, rating);
+            return Ok();
         }
     }
 }
