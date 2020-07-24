@@ -1,12 +1,9 @@
 ﻿using Crafts.Website.Models;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Crafts.Website.Services
 {
@@ -14,7 +11,10 @@ namespace Crafts.Website.Services
     {
         public IWebHostEnvironment _webHostEnviroment { get; }
 
-        public JsonFileProductsService(IWebHostEnvironment webHostEnviroment) => _webHostEnviroment = webHostEnviroment;
+        public JsonFileProductsService(IWebHostEnvironment webHostEnviroment)
+        {
+            _webHostEnviroment = webHostEnviroment;
+        }
 
         private string JsonFileName => Path.Combine(_webHostEnviroment.WebRootPath, "data", "products.json"); // Path wwwroot/Folder/Json
 
@@ -55,6 +55,5 @@ namespace Crafts.Website.Services
                     products
                 );
         }
-
     }
 }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Crafts.Website.Models;
+﻿using Crafts.Website.Models;
 using Crafts.Website.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Crafts.Website.Controllers
 {
@@ -15,10 +11,8 @@ namespace Crafts.Website.Controllers
     {
         private readonly JsonFileProductsService _productsService;
 
-        public ProductsController(JsonFileProductsService productsService)
-        {
-            _productsService = productsService;
-        }
+        public ProductsController(JsonFileProductsService productsService) => _productsService = productsService;
+
 
         [HttpGet]
         public IEnumerable<Product> GetProducts()
